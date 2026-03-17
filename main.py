@@ -5,6 +5,7 @@ from PySide6.QtUiTools import QUiLoader
 import pyqtgraph.opengl as gl
 
 from surface_viewer import SurfaceViewer
+from gradient_descent import GradientDescentVisualizer
 
 class CustomLoader(QUiLoader):
     def createWidget(self, classname, parent=None, name=''):
@@ -33,6 +34,19 @@ surface_viewer = SurfaceViewer(
     axis_x=window.lineEdit_3,
     axis_y=window.lineEdit_4,
     z_scale=window.lineEdit_5
+)
+
+# Создание визуализатора градиентного спуска
+gradient_descent = GradientDescentVisualizer(
+    gl_widget=view,
+    x_field=window.x_field,
+    y_field=window.y_field,
+    step_field=window.step_field,
+    iterations_field=window.iterations_field,
+    delay_field=window.delay_field,
+    start_button=window.pushButton,
+    console=window.textEdit,
+    surface_viewer=surface_viewer
 )
 
 window.show()
