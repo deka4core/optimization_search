@@ -167,7 +167,6 @@ class SurfaceViewer(QObject):
         # Масштаб Z
         z_scale = self._parse_float(self.z_scale.text(), 1.0)
 
-        # Создаем поверхность с раскраской
         surface_item, _, _, _, _ = self.generate_surface_item(
             func=func_info['func'],
             xmin=x_min,
@@ -178,7 +177,6 @@ class SurfaceViewer(QObject):
             z_scale=z_scale
         )
 
-        # Удаляем старую поверхность
         if self.current_surface:
             self.gl_widget.removeItem(self.current_surface)
 
@@ -191,7 +189,6 @@ class SurfaceViewer(QObject):
 
     def update_axis_grid(self):
         """Обновление осей и сетки"""
-        # Удаляем старые
         if self.current_axis:
             self.gl_widget.removeItem(self.current_axis)
             self.current_axis = None
@@ -200,7 +197,6 @@ class SurfaceViewer(QObject):
             self.gl_widget.removeItem(self.current_grid)
             self.current_grid = None
 
-        # Добавляем оси если нужно
         if self.axis_check.isChecked():
             x_min, x_max = self._parse_interval(self.axis_x.text(), -10, 10)
             y_min, y_max = self._parse_interval(self.axis_y.text(), -10, 10)

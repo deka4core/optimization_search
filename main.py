@@ -18,12 +18,10 @@ app = QApplication(sys.argv)
 loader = CustomLoader()
 window = loader.load("ui/main_window.ui")
 
-# Настройка отступов
 view = window.openGLWidget
 parent_layout = view.parent().layout()
 parent_layout.setContentsMargins(5, 0, 5, 0)
 
-# Создание менеджера поверхностей
 surface_viewer = SurfaceViewer(
     gl_widget=view,
     combo=window.comboBox,
@@ -36,7 +34,6 @@ surface_viewer = SurfaceViewer(
     z_scale=window.lineEdit_5
 )
 
-# Создание визуализатора градиентного спуска
 gradient_descent = GradientDescentVisualizer(
     gl_widget=view,
     x_field=window.x_field,
